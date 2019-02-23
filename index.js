@@ -30,12 +30,14 @@ function givemealetter (input){
 
     inquirer.prompt([{type: "input", name: "You guessed:", message: "Guess the letter!"}]).then(answers => { 
       console.log(answers)
-      if(answers = newWord){
-
+      if(answers = !newWord){
+        guesses -1
       }
     
-      console.log("You have " + guesses + " guesses left! Try Again!")
-      if (guesses <= 0){
+      console.log("Nope! You have " + guesses + " guesses left! Try Again!")
+      console.log(newWord.underscores());
+
+      if (guesses = 0){
         console.log("~~~~~~~~~~~~~~~~~~~~~")
         console.log("Game Over :(")
         console.log("The langauge was: " + randomWordfromBank);
