@@ -14,8 +14,17 @@ function gameStart() {
   var newWord = new Word(randomWordfromBank);
   console.log(newWord.underscores());
 
-  inquirer.prompt(["Give me a letter"]).then(answers => {
-    // Use user feedback for... whatever!!
-  });
+ givemealetter(newWord);
 }
-console.log(gameStart());
+
+function givemealetter (input){
+
+    inquirer.prompt([{type: "input", name: "letterInput", message: "Guess the letter!"}]).then(answers => { // In here: Have the inqurier or the prompt outside the game start to run over and over again, depending on the answer. If wrong answer, ask again, if it is the right answer the toggle the visibilty of letter.
+        console.log(answers)
+      // Have logic for answers.
+      // if right answers, return letter.
+
+    });
+}
+
+gameStart();
