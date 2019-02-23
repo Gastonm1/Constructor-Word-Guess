@@ -1,3 +1,10 @@
+// =========================LETTER.JS LAYOUT ==================================
+// Be able to grab letter by the character and toggle its visibility
+// Be able to find out if letter is guessed by user
+// convert letter to underscores
+// export
+//================================================================================
+
 function Letters(value) {
     this.character = value;
     this.vis = false;
