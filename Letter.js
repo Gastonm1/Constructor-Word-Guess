@@ -8,7 +8,7 @@ Letters.prototype.guess = function(input){ // Checks if user guess is correct.
     }
 } 
 
-Letters.prototype.underscores = function(){ // this will return the underscore depending on the user guess. (Toggler)
+Letters.prototype.underscore = function(){ // this will return the underscore depending on the user guess. (Toggler)
     if(this.vis === false){
         return "_"
     }
