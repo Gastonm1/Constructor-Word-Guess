@@ -26,4 +26,6 @@ var txt = new Word("Happy");
 //console.log(txt.value);
 
 var txt1 = new Word("Yay");
-console.log(txt1.underscores());
+//console.log(txt1.underscores());
+
+module.exports = Word
