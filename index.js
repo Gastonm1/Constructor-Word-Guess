@@ -18,38 +18,58 @@ var newWord = new Word(randomWordfromBank);
 
 function gameStart() {
   
-  console.log("Welcome to Hangman in the terminal! You will have 5 guesses to guess the correct word! Please find today's category below! Have fun!")
+  console.log("\nWelcome to Hangman in the terminal! You will have 5 guesses to guess the correct word! Please find today's category below! Have fun!\n")
   console.log("Category: ~~~~~Programming Languages~~~~~")
-  console.log("You have " + guesses + " guesses!")
+  console.log("You have " + guesses + " guesses!\n")
   console.log(newWord.underscores());
 
- givemealetter(newWord);
+  if (guesses <=0){
+    console.log("~~~~~~~~~~~~~~~~~~~~~")
+    console.log("Game Over :(")
+    console.log("The programming langauge was: " + randomWordfromBank);
+    console.log("~~~~~~~~~~~~~~~~~~~~~")
+    inquirer.prompt([{type: "confirm", name: "Continue?", message: "Want to try again?", default: true}])
+
+    if (inquirer.default === true) {
+    gameStart()}
+    else{ 
+   console.log("Come back again!")
+ }
 }
+
+  if (!newWord.underscores()){
+    console.log("\n✼ ҉　 ҉　 ҉　 ҉　 ҉　 ҉　✼\n")
+    console.log("WAY TO GO! YOU GUESSED IT!")
+    inquirer.prompt([{type: "confirm", name: "Continue?", message: "Can you guess another?", default: true}])
+
+    if (inquirer.default === true) {
+    gameStart()}
+    else{ 
+   console.log("Come back again!")
+ }
+}
+
+givemealetter();
+}
+
 
 function givemealetter (input){
 
-    inquirer.prompt([{type: "input", name: "You guessed:", message: "Guess the letter!"}]).then(answers => { 
+    inquirer.prompt([{type: "input", name: "You guessed:", message: "Guess the programming langauge!"}]).then(answers => { 
       console.log(answers)
-      if(answers = !newWord){
-        guesses -1
-      }
     
-      console.log("Nope! You have " + guesses + " guesses left! Try Again!")
-      console.log(newWord.underscores());
-
-      if (guesses = 0){
-        console.log("~~~~~~~~~~~~~~~~~~~~~")
-        console.log("Game Over :(")
-        console.log("The langauge was: " + randomWordfromBank);
-        console.log("~~~~~~~~~~~~~~~~~~~~~")
-        inquirer.prompt([{type: "confirm", name: "Confirm:", message: "Do you want to play again?", default: true}]).then(function(again){
-          if(again.confirm == false){
-            return false;
-          } else{
-            gameStart();
-          }
-        })
-      }
+      if(input === answers){
+        this.vis = true;
+        console.log("Great job! Keep going!")
+        givemealetter();
+    }else{
+      guesses -1;
+      console.log("\nNope! You have " + guesses + " guesses left! Try Again!\n")
+      givemealetter();
+    }
+  })
+};
+gameStart()
       // if (input === newWord.length){
       //   guesses = -1
       //   console.log("Try again!")
@@ -61,8 +81,3 @@ function givemealetter (input){
         
       // Have logic for answers.
       // if right answers, return letter.
-
-    });
-}
-
-gameStart();
