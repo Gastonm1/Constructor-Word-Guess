@@ -26,6 +26,11 @@ Word.prototype.underscores = function() {
   return letterArr;
 };
 
+function wordLetter (Letters){
+  wordLetter()
+  console.log(Letters)
+};
+
 var txt = new Word("Happy");
 //console.log(txt.value);
 
