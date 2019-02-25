@@ -76,7 +76,7 @@ function gameStart() {
   }
 
   givemealetter();
-}
+
 
 function givemealetter(input) {
   inquirer
@@ -101,19 +101,27 @@ function givemealetter(input) {
           console.log("\nGAME OVER (╯︵╰,)\n");
           console.log("The programming langauge was: " + randomWordfromBank);
           console.log("(╯︵╰,)");
-          inquirer.prompt([
-            {
-              type: "confirm",
-              name: "Continue?",
-              message: "Want to try again?",
-              default: true
+          inquirer
+          .prompt([{
+            message: "Would you like to try again?",
+            type: "list",
+            name: "continue",
+            choices: ["Yes", "No" ]
+          }])
+          .then(function(response){
+            if(inquirer.prompt.choices == "No"){
+              return false;
+            } else if(inquirer.prompt.choices == "Yes"){
+              guesses = 5;
+              gameStart();
             }
-          ]);
 
-          if (inquirer.default === true) return gameInit();
+          })
+          
         }
       }
     });
+}
 }
 gameStart();
 // if (input === newWord.length){
