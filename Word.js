@@ -10,9 +10,10 @@
 var Letters = require("./Letter.js");
 
 function Word(strInput) {
-  this.value = strInput.split("").map(function(letter, i, arr) {
+  this.value = strInput.split("").map(function(letter) {
     // Places the word in a string and uses the map method to create the array of each character. (Higher order function)
     return new Letters(letter);
+
   });
 }
 
@@ -31,10 +32,19 @@ function wordLetter (Letters){
   console.log(Letters)
 };
 
-var txt = new Word("Happy");
-//console.log(txt.value);
+Word.prototype.letterEvaluate = function(response) {
+  for (i = 0; i < this.value.length; i++) {
+    console.log(this.value[i].vis)
+    // console.log(response.guess)
+    if(response.guess === this.value[i].character){
 
-var txt1 = new Word("Yay");
-//console.log(txt1.underscores());
+      this.value[i].vis = true;
+      this.value[i].underscore();
+      
+      console.log(this.value[i].vis)
+    }
+    
+  }
+}
 
 module.exports = Word

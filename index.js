@@ -35,6 +35,7 @@ var newWord = new Word(randomWordfromBank);
 //=============="And here we go - Joker"=====================================================
 
 function gameStart() {
+ 
   console.log(
     "\nWelcome to Hangman in the terminal! You will have 5 guesses to guess the correct word! Please find today's category below! Have fun!\n"
   );
@@ -81,12 +82,13 @@ function gameStart() {
 function givemealetter(input) {
   inquirer
     .prompt([
-      { type: "input", name: "You guessed:", message: "Guess a letter!" }
+      { type: "input", name: "guess", message: "Guess a letter!" }
     ])
-    .then(answers => {
-      console.log(answers);
-
-      if (answers === randomWordfromBank.valueOf[" "]) {
+    .then(response => {
+      console.log(response);
+      newWord.letterEvaluate(response);
+      console.log(newWord.underscores());
+      if (response === randomWordfromBank.valueOf[" "]) {
         this.vis = true;
         console.log("Great job! Keep going!");
         givemealetter();
