@@ -10,10 +10,12 @@ This game uses constructors and two required files. It's a command line interfac
 
 *index.js* is the backbone of this game. It is the file that contains the logic of the game and the game play. This file depends on the Word constructor in the Word.js file.
 
-#Technologies utilized
+# Technologies utilized
 
--HTML
--Javascript
--Node.js
- 
+- HTML
+- Javascript
+- Node.js
+
+If you have any questions, please feel free to contact me: Gaston.marques@gmail.com
+
 
