@@ -27,15 +27,16 @@ var wordBank = [
   "go",
   "sql"
 ];
-var guesses = 5;
-var randomWordfromBank = wordBank[Math.floor(Math.random() * wordBank.length)];
-var newWord = new Word(randomWordfromBank);
 
 //===========================================================================================
 //=============="And here we go - Joker"=====================================================
 
 function gameStart() {
- 
+  var guesses = 10;
+  var randomWordfromBank =
+    wordBank[Math.floor(Math.random() * wordBank.length)];
+  var newWord = new Word(randomWordfromBank);
+
   console.log(
     "\nWelcome to Hangman in the terminal! You will have 5 guesses to guess the correct word! Please find today's category below! Have fun!\n"
   );
@@ -78,62 +79,57 @@ function gameStart() {
 
   givemealetter();
 
+  function givemealetter(input) {
+    inquirer
+      .prompt([{ type: "input", name: "guess", message: "Guess a letter!" }])
+      .then(response => {
+        console.log(response);
+        newWord.letterEvaluate(response);
+        console.log(newWord.underscores());
+        if (response === this.value) {
+          console.log("Great job! Keep going!");
+          givemealetter();
+        } else {
+          guesses = guesses - 1;
+          console.log(
+            "\nNope! You have " + guesses + " guesses left! Try Again!\n"
+          );
+          givemealetter();
 
-function givemealetter(input) {
-  inquirer
-    .prompt([
-      { type: "input", name: "guess", message: "Guess a letter!" }
-    ])
-    .then(response => {
-      console.log(response);
-      newWord.letterEvaluate(response);
-      console.log(newWord.underscores());
-      if (response === randomWordfromBank.valueOf[" "]) {
-        this.vis = true;
-        console.log("Great job! Keep going!");
-        givemealetter();
-      } else {
-        guesses = guesses - 1;
-        console.log(
-          "\nNope! You have " + guesses + " guesses left! Try Again!\n"
-        );
-        givemealetter();
+          if (guesses <= 0) {
+            console.log("\nGAME OVER (╯︵╰,)\n");
+            console.log("The programming langauge was: " + randomWordfromBank);
+            console.log("(╯︵╰,)");
+            inquirer
+              .prompt([
+                {
+                  message: "Would you like to try again?",
+                  type: "list",
+                  name: "continue",
+                  choices: ["Yes", "No"]
+                }
+              ])
+              .then(response => {
+                console.log("Hello");
+                switch (response.action) {
+                  case "Yes":
+                    gameStart();
+                    guesses = guesses + 6;
+                    break;
 
-        if (guesses <= 0) {
-          console.log("\nGAME OVER (╯︵╰,)\n");
-          console.log("The programming langauge was: " + randomWordfromBank);
-          console.log("(╯︵╰,)");
-          inquirer
-          .prompt([{
-            message: "Would you like to try again?",
-            type: "list",
-            name: "continue",
-            choices: ["Yes", "No" ]
-          }])
-          .then(function(response){
-            if(inquirer.prompt.choices == "No"){
-              return false;
-            } else if(inquirer.prompt.choices == "Yes"){
-              guesses = 5;
-              gameStart();
-            }
+                  case "No":
+                    gameEnd();
+                    break;
+                }
+              });
+          }
 
-          })
-          
+          function gameEnd() {
+            console.log("\nI hope you had fun!\n");
+          }
+          gameEnd()
         }
-      }
-    });
-}
-}
+      });
+  }
+};
 gameStart();
-// if (input === newWord.length){
-//   guesses = -1
-//   console.log("Try again!")
-// } else{
-//   this.vis = true;
-// }
-
-// In here: Have the inqurier or the prompt outside the game start to run over and over again, depending on the answer. If wrong answer, ask again, if it is the right answer the toggle the visibilty of letter.
-
-// Have logic for answers.
-// if right answers, return letter.

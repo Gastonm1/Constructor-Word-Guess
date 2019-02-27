@@ -34,14 +34,14 @@ function wordLetter (Letters){
 
 Word.prototype.letterEvaluate = function(response) {
   for (i = 0; i < this.value.length; i++) {
-    console.log(this.value[i].vis)
+    // console.log(this.value[i].vis)
     // console.log(response.guess)
     if(response.guess === this.value[i].character){
 
       this.value[i].vis = true;
       this.value[i].underscore();
       
-      console.log(this.value[i].vis)
+      // console.log(this.value[i].vis)
     }
     
   }
