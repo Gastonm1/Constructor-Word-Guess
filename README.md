@@ -16,6 +16,11 @@ This game uses constructors and two required files. It's a command line interfac
 - Javascript
 - Node.js
 
+# Plans to improve
+
+I intend on implementing another prompt after the user guesses the correct word or if the user runs out of guesses. This app will be updated.
+
+# Contact
 If you have any questions, please feel free to contact me: Gaston.marques@gmail.com
 
 

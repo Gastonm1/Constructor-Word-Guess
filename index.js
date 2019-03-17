@@ -89,7 +89,7 @@ function gameStart() {
         if (response === this.value) {
           console.log("Great job! Keep going!");
           givemealetter();
-        } else {
+        } else if (response !== this.value) {
           guesses = guesses - 1;
           console.log(
             "\nNope! You have " + guesses + " guesses left! Try Again!\n"
@@ -110,7 +110,7 @@ function gameStart() {
                 }
               ])
               .then(response => {
-                console.log("Hello");
+                console.log(response);
                 switch (response.action) {
                   case "Yes":
                     gameStart();
