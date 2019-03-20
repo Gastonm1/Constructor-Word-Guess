@@ -17,7 +17,7 @@ This game uses constructors and two required files. It's a command line interfac
 - Node.js
 
 # Check out my demo here! 
-https://drive.google.com/file/d/1PTR-ycVj88EC8SADZfr2Jar0DV7o0XK7/view 
+https://drive.google.com/file/d/1PTR-ycVj88EC8SADZfr2Jar0DV7o0XK7/view  
 
 # Plans to improve
 
