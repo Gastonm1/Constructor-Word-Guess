@@ -13,7 +13,7 @@ This game uses constructors and two required files. It's a command line interfac
 # Technologies utilized
 
 - HTML
-- Javascript
+- Javascript (Higher Order Functions)
 - Node.js
 
 # Check out my demo here! 
